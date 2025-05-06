@@ -1,34 +1,20 @@
- <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
+    <script src="dependencies/html-pull.js"></script>
 <head>
     <title>Unorganized Thoughts</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/dependencies/setup.css">
 </head>
 <body>
-    <!-- 🌙 Toggle Button -->
+    <div w3-include-html="/dependencies/setup.html"></div> 
     <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
 
-    <h1 id="headbar" href="#index.html">Unorganized Thoughts</h1>
-
-    <div id="sidebar-left">
-        <h3>Directory</h3>
-        <p>Blog is over there >>></p>
-    </div>
-
-    <div id="sidebar-right">
-        <h3>About</h3>
-        <p>Thanks for dropping by my site. I'm just some random dude who enjoys everything technology and computer related. This site is just a little hobby project right now, but maybe I will get enough time to make it into a proper website. For now I will just be sharing some info I know and venting a bit about my life.</p>
-        <br>
-        <h3>Current screen size support</h3>
-        <p>Mobile</P>
-        <p>300-450px</P>
-        <p>Desktop</P>
-        <p>950px+</P>
-        <br> <!-- also exactly 950 px looks a little funny, but I will leave that up to you guys to find out for yourselves -->
-        <p>All other sizer do "work" but may not look nice per se</P>
-    </div>
     <!-------------------------------------------------------------------------------------->
+
+
+
+ 
     <div class="post">
         <h2>Caffine is fun</h2>
         <p style="text-indent: 2em;" class="post-paragraph">Well if anyone just so happened to be looking at my commit history they might notice that I had quite a few of them last night. If you want the long short I pulled an all nighter and worked on the website to make me feel good. If you don’t want the long long, you can skip to here.</p>
@@ -47,28 +33,14 @@
 <p class="post-paragraph">Peace✌️,</p>
 <p class="post-paragraph">Lucas</p>
     </div>
-    <!-------------------------------------------------------------------------------------->
-    <!-- 🌙 Dark Mode Script -->
-    <script>
-        const toggle = document.getElementById('darkModeToggle');
-        const body = document.body;
+    
 
-        function setMode(dark) {
-            body.classList.toggle('dark-mode', dark);
-            toggle.textContent = dark ? '☀️' : '🌙';
-            localStorage.setItem('theme', dark ? 'dark' : 'light');
-        }
+    
 
-        // On load
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            setMode(true);
-        }
+ <!-------------------------------------------------------------------------------------->
+    <!-- Dark Mode Script -->
+    <script src="dependencies/dark-mode.js"></script>
 
-        toggle.addEventListener('click', () => {
-            const isDark = !body.classList.contains('dark-mode');
-            setMode(isDark);
-        });
-    </script>
+    <script>includeHTML();</script>
 </body>
 </html>
