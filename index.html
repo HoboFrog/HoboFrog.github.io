@@ -16,7 +16,6 @@
             text-align: center;
             background: rgb(255, 255, 255);
             border: 6px ridge rgb(0,0,0);
-            height: 65px;
             margin: 0px;
             color: rgb(0, 0, 0);
             font-family: monospace;
@@ -100,11 +99,15 @@ h2, h3 {
     text-align: center;
     font-size: 1.5em;
 }
+h1 {
+    text-align: center;
+    font-family: monospace;
+    font-size: 75px;
+}
 #headbar {
     text-align: center;
     background: rgb(255, 255, 255);
     border: 9px ridge rgb(0,0,0);
-    height: 97px;
     margin: 0px;
     color: rgb(0, 0, 0);
     font-family: monospace;
@@ -211,8 +214,10 @@ h2, h3 {
 </head>
 <body>
     <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
-    
-    <h1 id="headbar" href="#index.html">Unorganized Thoughts</h1>
+
+    <div id="headbar">
+    <h1 href="#index.html">Unorganized Thoughts</h1>
+    </div>
     
     <div id="sidebar-left">
         <h3>Directory</h3>
@@ -263,7 +268,7 @@ h2, h3 {
             toggle.textContent = dark ? '☀️' : '🌙';
             localStorage.setItem('theme', dark ? 'dark' : 'light');
         }
-#
+
         // On load
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
