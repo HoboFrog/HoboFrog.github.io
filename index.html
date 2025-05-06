@@ -1,53 +1,46 @@
 <!DOCTYPE HTML>
 <html>
-    <script src="dependencies/html-pull.js"></script>
 <head>
     <title>Unorganized Thoughts</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/dependencies/setup.css">
+    <script src="/dependencies/html-pull.js"></script>
 </head>
 <body>
     <div w3-include-html="/dependencies/setup.html"></div> 
     <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
 
-    <!-------------------------------------------------------------------------------------->
+    <div id="postsContainer"></div>
 
+    <script>
+    async function fetchPosts() {
+        try {
+            const res = await fetch('/api/posts');
+            const posts = await res.json();
+            const container = document.getElementById('postsContainer');
 
+            posts.forEach(post => {
+                const div = document.createElement('div');
+                div.className = 'post';
+                const preview = post.content.length > 150 ? post.content.substring(0, 150) + '...' : post.content;
 
-    <div class="post">
-        <h2>Sleep & Depression</h2>
-        <p>5/6/25 (part 2!)</p>
-        <p style="text-indent: 2em;">I have somewhat of a long and complicated history with sleep. For starters, I have diagnosed ADHD and Autism, so I am very restless and it is difficult for me to calm down enough to sleep (I'm not quite sure which of the...</p>
-        <a href="/5-6-25-2.html">Read more...</a>
-    </div>
-    <div class="post">
-        <h2>Caffine is fun</h2>
-        <p>5/6/25</p>
-        <p style="text-indent: 2em;">Well if anyone just so happened to be looking at my commit history they might notice that I had quite a few of them last night. If you want the long short I pulled an all nighter and worked on the website to make me feel...</p>
-        <a href="/5-6-25.html">Read more...</a>
-    </div>
-    <div class="post">
-        <h2>Site construction has begun</h2>
-        <p>5/5/25</p>
-        <p style="text-indent: 2em;"> Today I decided I wanted to make my own blog, because I don't feel like there is anyone or anywhere where I can share my thoughts freely and safely ish. Hopefully I have enough coding prowess and time to make this a decent...</p>
-        <a href="/5-5-25.html">Read more...</a>
-    </div>
+                div.innerHTML = `
+                    <h2>${post.title}</h2>
+                    <p>${new Date(post.date).toLocaleDateString()}</p>
+                    <p style="text-indent: 2em;">${preview}</p>
+                    <a href="/post/${new Date(post.date).toISOString().split('T')[0]}">Read more...</a>
+                `;
+                container.appendChild(div);
+            });
+        } catch (err) {
+            console.error('Failed to fetch posts:', err);
+        }
+    }
 
-    
-    <!--
-    <div class="post">
-        <h2> [title] </h2>
-        <p style="text-indent: 2em;"> [story preview] </p>
-        <a href="https://hobofrog.github.io/">Read more...</a>
-    </div>
+    includeHTML();
+    fetchPosts();
+    </script>
 
-
-
-    
-
-    <!-- Dark Mode Script -->
-    <script src="dependencies/dark-mode.js"></script>
-
-    <script>includeHTML();</script>
+    <script src="/dependencies/dark-mode.js"></script>
 </body>
 </html>
