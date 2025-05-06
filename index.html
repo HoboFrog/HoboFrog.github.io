@@ -7,7 +7,7 @@
         body {
             background: rgb(222, 222, 222);
             color: black;
-            transition: background 0.4s ease, color 0.4s ease;
+            transition: background 1s ease, color 1s ease;
         }
         h2, h3 {
             text-align: center;
@@ -35,19 +35,20 @@
             width: 20%;
             margin-left: 0px;
             margin-top: 10px;
+            text-align: center;
         }
         #sidebar-right {
             float: right;
             width: 20%;
             margin-right: 0px;
             margin-top: 10px;
+            text-align: center;
         }
         .post {
-            margin-left: 24%;
-            margin-right: 24%;
+            margin-left: calc(20% + 25px);
+            margin-right: calc(20% + 25px);
             margin-top: 10px;
-            padding-left: 2px;
-            padding-right: 2px;
+            padding: 15px;
         }
 
         /* 🌙 DARK MODE STYLES */
@@ -88,24 +89,32 @@
     <!-- 🌙 Toggle Button -->
     <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
 
-    <h1 id="headbar">Unorganized Thoughts</h1>
+    <h1 id="headbar" href="#index.html">Unorganized Thoughts</h1>
 
     <div id="sidebar-left">
         <h3>Directory</h3>
-        <p>The blog is to the right.</p>
+        <p>Blog is over there >>></p>
     </div>
 
     <div id="sidebar-right">
         <h3>About</h3>
-        <p>This is a well designed and polished website.</p>
+        <p>Thanks for dropping by my site. I'm just some random dude who enjoys everything technology and computer related. This site is just a little hobby project right now, but maybe I will get enough time to make it into a proper website. For now I will just be sharing some info I know and venting a bit about my life.</p>
     </div>
-
+    <!-------------------------------------------------------------------------------------->
     <div class="post">
         <h2>Site construction has begun</h2>
-        <p>Bop</p>
-        <a href="http://google.com">Read more...</a>
+        <p style="text-indent: 2em;"> Today I decided I wanted to maek my own blog, because I don't feel like there is anyone or anywhere where I can share my thoughts freely and safely ish. Hopefully I have enough coding prowess and time to make this a decent...</p>
+        <a href="https://hobofrog.github.io/5-5-25.html">Read more...</a>
     </div>
 
+    <!--
+    <div class="post">
+        <h2>Site construction has begun</h2>
+        <p style="text-indent: 2em;">Today I decided I wanted to maek my own blog, because I don't feel like there is anyone or anywhere where I can share my thoughts freely and safely ish.</p>
+        <a href="https://hobofrog.github.io/">Read more...</a>
+    </div>
+    -->
+    <!-------------------------------------------------------------------------------------->
     <!-- 🌙 Dark Mode Script -->
     <script>
         const toggle = document.getElementById('darkModeToggle');
