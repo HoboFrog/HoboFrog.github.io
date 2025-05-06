@@ -49,29 +49,8 @@
         <p style="text-indent: 2em;"> [story preview] </p>
         <a href="https://hobofrog.github.io/">Read more...</a>
     </div>
-    -->
-    <!-------------------------------------------------------------------------------------->
-    <!-- 🌙 Dark Mode Script -->
-    <script>
-        const toggle = document.getElementById('darkModeToggle');
-        const body = document.body;
 
-        function setMode(dark) {
-            body.classList.toggle('dark-mode', dark);
-            toggle.textContent = dark ? '☀️' : '🌙';
-            localStorage.setItem('theme', dark ? 'dark' : 'light');
-        }
-
-        // On load
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            setMode(true);
-        }
-
-        toggle.addEventListener('click', () => {
-            const isDark = !body.classList.contains('dark-mode');
-            setMode(isDark);
-        });
-    </script>
+    <!-- Dark Mode Script -->
+    <script src="dependencies/setup.js"></script>
 </body>
 </html>
