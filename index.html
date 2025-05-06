@@ -1,96 +1,132 @@
-<!DOCTYPE HTML> <!-- -->
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Unorganized Thoughts</title>
-        <meta charset="utf-8">
-        <style>
-            h2 {
-           text-align:center; 
+<head>
+    <title>Unorganized Thoughts</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            background: rgb(222, 222, 222);
+            color: black;
+            transition: background 0.4s ease, color 0.4s ease;
         }
-        body{
-                background: rgb(222, 222, 222);
-                
-            }
-        h3{
-                text-align:center;
-            }
-        #headbar{
-                text-align:center;
-                background: rgb(255, 255, 255);
-                border: 6px ridge rgb(0,0,0);
-                height: 65px;
-                margin: 0px;
-                margin-top: 0px;
-                color: rgb(0, 0, 0);
-                font-family: monospace;
-                
-                font-size: 50px;
-            }
-        #sidebar-left{
-                background: rgb(255,255,255);
-                border: 3px solid rgb(0,0,0);
-                float: left;
-                width: 20%;
-                margin-left:0px;
-                margin-top:10px;
-                padding:5px;
-                font-family: monospace;
-            }
-        #sidebar-right{
-                background: rgb(255,255,255);
-                border: 3px solid rgb(0,0,0);
-                float: right;
-                width: 20%;
-                margin-right:0px;
-                margin-top:10px;
-                padding:5px;
-                font-family: monospace;
-            }
-        .post{
-                margin-left:24%;
-                margin-right:24%;
-                background: rgb(255, 255, 255);
-                padding-left:2px; padding-right:2px;
-                margin-top: 10px;
-                border: 3px solid rgb(0,0,0);
-            }
-        </style>
-    </head>
-    <body>
-        <h1 id="headbar">Unorganized Thoughts</h1>
-        <div id="sidebar-left">
-            <h3>Directory</h3>
-            <p>
-            The blog is to the right.
-            </p>
-        </div> <!--Left sidebar-->
-        <div id="sidebar-right">
-            <h3>About</h3>
-            <p>
-                This is a well designed and polished website.
-            </p>
-        </div> <!--Right sidebar-->
-        
-        <!--Posts-->
-        <div class="post">
-                <h2>Site construction has begun</h2>
-                <p>
-                Bop
-                </p>
-                <a href="http://google.com">Read more...</a>
-            </div> <!--5/5/25-->
-            
-            
-        <!--Example-->
-        <!--
-        <div class="post">
-                <h2>[Title]</h2>
-                <p>
-                [Post preveiw]
-                </p>
-                <a href="http://google.com">Read more...</a>
-            </div>
-        -->
-        
-    </body>
+        h2, h3 {
+            text-align: center;
+        }
+        #headbar {
+            text-align: center;
+            background: rgb(255, 255, 255);
+            border: 6px ridge rgb(0,0,0);
+            height: 65px;
+            margin: 0px;
+            color: rgb(0, 0, 0);
+            font-family: monospace;
+            font-size: 50px;
+            transition: background 0.4s, color 0.4s;
+        }
+        #sidebar-left, #sidebar-right, .post {
+            background: rgb(255,255,255);
+            border: 3px solid rgb(0,0,0);
+            font-family: monospace;
+            padding: 5px;
+            transition: background 0.4s, color 0.4s, border-color 0.4s;
+        }
+        #sidebar-left {
+            float: left;
+            width: 20%;
+            margin-left: 0px;
+            margin-top: 10px;
+        }
+        #sidebar-right {
+            float: right;
+            width: 20%;
+            margin-right: 0px;
+            margin-top: 10px;
+        }
+        .post {
+            margin-left: 24%;
+            margin-right: 24%;
+            margin-top: 10px;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        /* 🌙 DARK MODE STYLES */
+        .dark-mode {
+            background: rgb(34, 34, 34);
+            color: white;
+        }
+        .dark-mode #headbar,
+        .dark-mode #sidebar-left,
+        .dark-mode #sidebar-right,
+        .dark-mode .post {
+            background: rgb(51, 51, 51);
+            border-color: white;
+            color: white;
+        }
+
+        /* 🌗 DARK MODE TOGGLE BUTTON */
+        #darkModeToggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            font-family: monospace;
+            padding: 5px 10px;
+            font-size: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        #darkModeToggle:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- 🌙 Toggle Button -->
+    <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
+
+    <h1 id="headbar">Unorganized Thoughts</h1>
+
+    <div id="sidebar-left">
+        <h3>Directory</h3>
+        <p>The blog is to the right.</p>
+    </div>
+
+    <div id="sidebar-right">
+        <h3>About</h3>
+        <p>This is a well designed and polished website.</p>
+    </div>
+
+    <div class="post">
+        <h2>Site construction has begun</h2>
+        <p>Bop</p>
+        <a href="http://google.com">Read more...</a>
+    </div>
+
+    <!-- 🌙 Dark Mode Script -->
+    <script>
+        const toggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        function setMode(dark) {
+            body.classList.toggle('dark-mode', dark);
+            toggle.textContent = dark ? '☀️' : '🌙';
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+        }
+
+        // On load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            setMode(true);
+        }
+
+        toggle.addEventListener('click', () => {
+            const isDark = !body.classList.contains('dark-mode');
+            setMode(isDark);
+        });
+    </script>
+</body>
 </html>
