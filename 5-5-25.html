@@ -1,0 +1,146 @@
+ <!DOCTYPE HTML>
+<html>
+<head>
+    <title>Unorganized Thoughts</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            background: rgb(222, 222, 222);
+            color: black;
+            transition: background 1s ease, color 1s ease;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        #headbar {
+            text-align: center;
+            background: rgb(255, 255, 255);
+            border: 6px ridge rgb(0,0,0);
+            height: 65px;
+            margin: 0px;
+            color: rgb(0, 0, 0);
+            font-family: monospace;
+            font-size: 50px;
+            transition: background 0.4s, color 0.4s;
+        }
+        #sidebar-left, #sidebar-right, .post {
+            background: rgb(255,255,255);
+            border: 3px solid rgb(0,0,0);
+            font-family: monospace;
+            padding: 5px;
+            transition: background 0.4s, color 0.4s, border-color 0.4s;
+        }
+        #sidebar-left {
+            float: left;
+            width: 20%;
+            margin-left: 0px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        #sidebar-right {
+            float: right;
+            width: 20%;
+            margin-right: 0px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .post {
+            margin-left: calc(20% + 25px);
+            margin-right: calc(20% + 25px);
+            margin-top: 10px;
+            padding: 15px;
+        }
+        .post-paragraph {
+            padding-left: 1em;
+            padding-right: 1em;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+
+        /* 🌙 DARK MODE STYLES */
+        .dark-mode {
+            background: rgb(34, 34, 34);
+            color: white;
+        }
+        .dark-mode #headbar,
+        .dark-mode #sidebar-left,
+        .dark-mode #sidebar-right,
+        .dark-mode .post {
+            background: rgb(51, 51, 51);
+            border-color: white;
+            color: white;
+        }
+
+        /* 🌗 DARK MODE TOGGLE BUTTON */
+        #darkModeToggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            font-family: monospace;
+            padding: 5px 10px;
+            font-size: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        #darkModeToggle:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- 🌙 Toggle Button -->
+    <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
+
+    <h1 id="headbar" href="#index.html">Unorganized Thoughts</h1>
+
+    <div id="sidebar-left">
+        <h3>Directory</h3>
+        <p>Blog is over there >>></p>
+    </div>
+
+    <div id="sidebar-right">
+        <h3>About</h3>
+        <p>Thanks for dropping by my site. I'm just some random dude who enjoys everything technology and computer related. This site is just a little hobby project right now, but maybe I will get enough time to make it into a proper website. For now I will just be sharing some info I know and venting a bit about my life.</p>
+    </div>
+    <!-------------------------------------------------------------------------------------->
+    <div class="post">
+        <h2>Site construction has begun</h2>
+        <p style="text-indent: 2em;" class="post-paragraph">Today I decided I wanted to make my own blog, because I don't feel like there is anyone or anywhere where I can share my thoughts freely and safely ish. Hopefully I have enough coding prowess and time to make this a half decent website for us to enjoy.</p>
+        <p style="text-indent: 2em;" class="post-paragraph">I should probably talk a bit more about the core reason I am making this blog in the first place. I have been very much struggling to even get through my day these past months. I want to share about some of the struggles I have been going through, mostly as a form of therapy for myself, but also hopefully to help anyone else who might be going through anything similar.</p>
+        <p style="text-indent: 2em;" class="post-paragraph">I don’t recommend this, as this site is extremely scuffed, probably has a vulnerability that leaks my email and name, and isn’t very easy to use. However, my code is open source at this point, so if anyone wants to, they can make a github fork of my repo and make their own blog.</p>
+        <p style="text-indent: 2em;" class="post-paragraph">Anyways, I will probably keep this post to just this, and dive more into my life in a later post, so thank you for stopping by my little slice of the internet.\nHope to see you in the next post\nLove,/nLucas</p>
+        <br>
+        <p class="post-paragraph">Hope to see you in the next post</p>
+        <p class="post-paragraph">Love,</p>
+        <p class="post-paragraph">Lucas</p>
+
+    </div>
+    <!-------------------------------------------------------------------------------------->
+    <!-- 🌙 Dark Mode Script -->
+    <script>
+        const toggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        function setMode(dark) {
+            body.classList.toggle('dark-mode', dark);
+            toggle.textContent = dark ? '☀️' : '🌙';
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+        }
+
+        // On load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            setMode(true);
+        }
+
+        toggle.addEventListener('click', () => {
+            const isDark = !body.classList.contains('dark-mode');
+            setMode(isDark);
+        });
+    </script>
+</body>
+</html>
