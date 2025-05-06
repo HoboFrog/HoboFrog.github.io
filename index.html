@@ -210,11 +210,12 @@ h2, h3 {
     </style>
 </head>
 <body>
-    <!-- 🌙 Toggle Button -->
     <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
-
-    <h1 id="headbar" href="#index.html">Unorganized Thoughts</h1>
-
+    
+    <div id="headbar">
+    <h1 href="/index.html">Unorganized Thoughts</h1>
+    </div>
+    
     <div id="sidebar-left">
         <h3>Directory</h3>
         <p>Blog is over there >>></p>
@@ -234,15 +235,22 @@ h2, h3 {
     </div>
     <!-------------------------------------------------------------------------------------->
     <div class="post">
+        <h2>Caffine is fun</h2>
+        <p>5/6/25</p>
+        <p style="text-indent: 2em;">Well if anyone just so happened to be looking at my commit history they might notice that I had quite a few of them last night. If you want the long short I pulled an all nighter and worked on the website to make me feel...</p>
+        <a href="/5-6-25.html">Read more...</a>
+    </div>
+    <div class="post">
         <h2>Site construction has begun</h2>
-        <p style="text-indent: 2em;"> Today I decided I wanted to maek my own blog, because I don't feel like there is anyone or anywhere where I can share my thoughts freely and safely ish. Hopefully I have enough coding prowess and time to make this a decent...</p>
+        <p>5/5/25</p>
+        <p style="text-indent: 2em;"> Today I decided I wanted to make my own blog, because I don't feel like there is anyone or anywhere where I can share my thoughts freely and safely ish. Hopefully I have enough coding prowess and time to make this a decent...</p>
         <a href="/5-5-25.html">Read more...</a>
     </div>
 
     <!--
     <div class="post">
-        <h2>Site construction has begun</h2>
-        <p style="text-indent: 2em;">Today I decided I wanted to maek my own blog, because I don't feel like there is anyone or anywhere where I can share my thoughts freely and safely ish.</p>
+        <h2> [title] </h2>
+        <p style="text-indent: 2em;"> [story preview] </p>
         <a href="https://hobofrog.github.io/">Read more...</a>
     </div>
     -->
@@ -257,7 +265,7 @@ h2, h3 {
             toggle.textContent = dark ? '☀️' : '🌙';
             localStorage.setItem('theme', dark ? 'dark' : 'light');
         }
-
+#
         // On load
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
