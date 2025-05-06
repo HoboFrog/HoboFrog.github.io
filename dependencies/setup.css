@@ -1,0 +1,206 @@
+body {
+            background: rgb(222, 222, 222);
+            color: black;
+            transition: background 1s ease, color 1s ease;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        #headbar {
+            text-align: center;
+            background: rgb(255, 255, 255);
+            border: 6px ridge rgb(0,0,0);
+            margin: 0px;
+            color: rgb(0, 0, 0);
+            font-family: monospace;
+            font-size: 50px;
+            transition: background 0.4s, color 0.4s;
+        }
+        #sidebar-left, #sidebar-right, .post {
+            background: rgb(255,255,255);
+            border: 3px solid rgb(0,0,0);
+            font-family: monospace;
+            padding: 5px;
+            transition: background 0.4s, color 0.4s, border-color 0.4s;
+        }
+        #sidebar-left {
+            float: left;
+            width: 20%;
+            margin-left: 0px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        #sidebar-right {
+            float: right;
+            width: 20%;
+            margin-right: 0px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .post {
+            margin-left: calc(20% + 25px);
+            margin-right: calc(20% + 25px);
+            margin-top: 10px;
+            padding: 15px;
+        }
+        .post-paragraph {
+            padding-left: 1em;
+            padding-right: 1em;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+
+        /* 🌙 DARK MODE STYLES */
+        .dark-mode {
+            background: rgb(34, 34, 34);
+            color: white;
+        }
+        .dark-mode #headbar,
+        .dark-mode #sidebar-left,
+        .dark-mode #sidebar-right,
+        .dark-mode .post {
+            background: rgb(51, 51, 51);
+            border-color: white;
+            color: white;
+        }
+
+        /* 🌗 DARK MODE TOGGLE BUTTON */
+        #darkModeToggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            font-family: monospace;
+            padding: 5px 10px;
+            font-size: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        #darkModeToggle:hover {
+            transform: scale(1.2);
+        }
+    @media (min-width: 950px) {
+        body {
+    background: rgb(222, 222, 222);
+    color: black;
+    transition: background 1s ease, color 1s ease;
+    font-size: 150%;
+}
+h2, h3 {
+    text-align: center;
+    font-size: 1.5em;
+}
+h1 {
+    text-align: center;
+    font-family: monospace;
+    font-size: 75px;
+}
+#headbar {
+    text-align: center;
+    background: rgb(255, 255, 255);
+    border: 9px ridge rgb(0,0,0);
+    margin: 0px;
+    color: rgb(0, 0, 0);
+    font-family: monospace;
+    font-size: 75px;
+    transition: background 0.4s, color 0.4s;
+}
+#sidebar-left, #sidebar-right, .post {
+    background: rgb(255,255,255);
+    border: 5px solid rgb(0,0,0);
+    font-family: monospace;
+    padding: 8px;
+    transition: background 0.4s, color 0.4s, border-color 0.4s;
+}
+#sidebar-left {
+    float: left;
+    width: 20%;
+    margin-left: 0px;
+    margin-top: 15px;
+    text-align: center;
+}
+#sidebar-right {
+    float: right;
+    width: 20%;
+    margin-right: 0px;
+    margin-top: 15px;
+    text-align: center;
+}
+.post {
+    margin-left: calc(20% + 37.5px);
+    margin-right: calc(20% + 37.5px);
+    margin-top: 15px;
+    padding: 23px;
+}
+.post-paragraph {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    margin-top: 7.5px;
+    margin-bottom: 0;
+}
+
+/* 🌙 DARK MODE STYLES */
+.dark-mode {
+    background: rgb(34, 34, 34);
+    color: white;
+}
+.dark-mode #headbar,
+.dark-mode #sidebar-left,
+.dark-mode #sidebar-right,
+.dark-mode .post {
+    background: rgb(51, 51, 51);
+    border-color: white;
+    color: white;
+}
+
+/* 🌗 DARK MODE TOGGLE BUTTON */
+#darkModeToggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+    font-family: monospace;
+    padding: 8px 15px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+#darkModeToggle:hover {
+    transform: scale(1.2);
+}
+}
+@media (max-width: 950px) {
+  #headbar {
+    font-size: 40px;
+    height: 70px;
+    padding: 10px;
+  }
+
+  #sidebar-left,
+  #sidebar-right {
+    display: none;
+  }
+
+  .post {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .post-paragraph {
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1em;
+  }
+
+  #darkModeToggle {
+    top: 8px;
+    right: 8px;
+    font-size: 24px;
+    padding: 5px 10px;
+  }
+}
