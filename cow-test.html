@@ -1,268 +1,37 @@
- <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
+    <script src="dependencies/html-pull.js"></script>
 <head>
     <title>Unorganized Thoughts</title>
     <meta charset="utf-8">
-    <style>
-    body {
-            background: rgb(222, 222, 222);
-            color: black;
-            transition: background 1s ease, color 1s ease;
-        }
-        h2, h3 {
-            text-align: center;
-        }
-        #headbar {
-            text-align: center;
-            background: rgb(255, 255, 255);
-            border: 6px ridge rgb(0,0,0);
-            height: 65px;
-            margin: 0px;
-            color: rgb(0, 0, 0);
-            font-family: monospace;
-            font-size: 50px;
-            transition: background 0.4s, color 0.4s;
-        }
-        #sidebar-left, #sidebar-right, .post {
-            background: rgb(255,255,255);
-            border: 3px solid rgb(0,0,0);
-            font-family: monospace;
-            padding: 5px;
-            transition: background 0.4s, color 0.4s, border-color 0.4s;
-        }
-        #sidebar-left {
-            float: left;
-            width: 20%;
-            margin-left: 0px;
-            margin-top: 10px;
-            text-align: center;
-        }
-        #sidebar-right {
-            float: right;
-            width: 20%;
-            margin-right: 0px;
-            margin-top: 10px;
-            text-align: center;
-        }
-        .post {
-            margin-left: calc(20% + 25px);
-            margin-right: calc(20% + 25px);
-            margin-top: 10px;
-            padding: 15px;
-        }
-        .post-paragraph {
-            padding-left: 1em;
-            padding-right: 1em;
-            margin-top: 5px;
-            margin-bottom: 0;
-        }
-
-        /* 🌙 DARK MODE STYLES */
-        .dark-mode {
-            background: rgb(34, 34, 34);
-            color: white;
-        }
-        .dark-mode #headbar,
-        .dark-mode #sidebar-left,
-        .dark-mode #sidebar-right,
-        .dark-mode .post {
-            background: rgb(51, 51, 51);
-            border-color: white;
-            color: white;
-        }
-
-        /* 🌗 DARK MODE TOGGLE BUTTON */
-        #darkModeToggle {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
-            font-family: monospace;
-            padding: 5px 10px;
-            font-size: 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-
-        #darkModeToggle:hover {
-            transform: scale(1.2);
-        }
-    @media (min-width: 950px) {
-        body {
-    background: rgb(222, 222, 222);
-    color: black;
-    transition: background 1s ease, color 1s ease;
-    font-size: 150%;
-}
-h2, h3 {
-    text-align: center;
-    font-size: 1.5em;
-}
-#headbar {
-    text-align: center;
-    background: rgb(255, 255, 255);
-    border: 9px ridge rgb(0,0,0);
-    height: 97px;
-    margin: 0px;
-    color: rgb(0, 0, 0);
-    font-family: monospace;
-    font-size: 75px;
-    transition: background 0.4s, color 0.4s;
-}
-#sidebar-left, #sidebar-right, .post {
-    background: rgb(255,255,255);
-    border: 5px solid rgb(0,0,0);
-    font-family: monospace;
-    padding: 8px;
-    transition: background 0.4s, color 0.4s, border-color 0.4s;
-}
-#sidebar-left {
-    float: left;
-    width: 20%;
-    margin-left: 0px;
-    margin-top: 15px;
-    text-align: center;
-}
-#sidebar-right {
-    float: right;
-    width: 20%;
-    margin-right: 0px;
-    margin-top: 15px;
-    text-align: center;
-}
-.post {
-    margin-left: calc(20% + 37.5px);
-    margin-right: calc(20% + 37.5px);
-    margin-top: 15px;
-    padding: 23px;
-}
-.post-paragraph {
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    margin-top: 7.5px;
-    margin-bottom: 0;
-}
-
-/* 🌙 DARK MODE STYLES */
-.dark-mode {
-    background: rgb(34, 34, 34);
-    color: white;
-}
-.dark-mode #headbar,
-.dark-mode #sidebar-left,
-.dark-mode #sidebar-right,
-.dark-mode .post {
-    background: rgb(51, 51, 51);
-    border-color: white;
-    color: white;
-}
-
-/* 🌗 DARK MODE TOGGLE BUTTON */
-#darkModeToggle {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 1000;
-    font-family: monospace;
-    padding: 8px 15px;
-    font-size: 30px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-#darkModeToggle:hover {
-    transform: scale(1.2);
-}
-}
-@media (max-width: 950px) {
-  #headbar {
-    font-size: 40px;
-    height: 70px;
-    padding: 10px;
-  }
-
-  #sidebar-left,
-  #sidebar-right {
-    display: none;
-  }
-
-  .post {
-    margin: 10px;
-    padding: 15px;
-  }
-
-  .post-paragraph {
-    padding-left: 1em;
-    padding-right: 1em;
-    font-size: 1em;
-  }
-
-  #darkModeToggle {
-    top: 8px;
-    right: 8px;
-    font-size: 24px;
-    padding: 5px 10px;
-  }
-}
-    </style>
+    <link rel="stylesheet" href="/dependencies/setup.css">
 </head>
 <body>
-    <!-- 🌙 Toggle Button -->
+    <div w3-include-html="/dependencies/setup.html"></div> 
     <button id="darkModeToggle" title="Toggle dark mode">🌙</button>
 
-    <h1 id="headbar" href="#index.html">Unorganized Thoughts</h1>
-
-    <div id="sidebar-left">
-        <h3>Directory</h3>
-        <p>Go away this is super duper secret!!!</p>
-    </div>
-
-    <div id="sidebar-right">
-        <h3>About</h3>
-        <p>Thanks for dropping by my site. I'm just some random dude who enjoys everything technology and computer related. This site is just a little hobby project right now, but maybe I will get enough time to make it into a proper website. For now I will just be sharing some info I know and venting a bit about my life.</p>
-        <br>
-        <h3>Current screen size support</h3>
-        <p>Mobile</P>
-        <p>300-450px</P>
-        <p>Desktop</P>
-        <p>950px+</P>
-        <br> <!-- also exactly 950 px looks a little funny, but I will leave that up to you guys to find out for yourselves -->
-        <p>All other sizer do "work" but may not look nice per se</P>
-    </div>
     <!-------------------------------------------------------------------------------------->
+
+
+
+
+
+
+ 
     <div class="post">
         <h2>Site construction has begun</h2>
         <p style="text-indent: 2em;" class="Cow 🐄</p>
         <img src="/assets/cow.jpg" alt="Picture of a cow standing in a field">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfv5J1ZdUslIno9H6UFY7CdX_AyDaOJNraVe0-S4QV6Hqf7Mg/viewform?embedded=true" width="80%" height="300" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         
-        
-    </div>
-    <!-------------------------------------------------------------------------------------->
-    <!-- 🌙 Dark Mode Script -->
-    <script>
-        const toggle = document.getElementById('darkModeToggle');
-        const body = document.body;
 
-        function setMode(dark) {
-            body.classList.toggle('dark-mode', dark);
-            toggle.textContent = dark ? '☀️' : '🌙';
-            localStorage.setItem('theme', dark ? 'dark' : 'light');
-        }
 
-        // On load
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            setMode(true);
-        }
 
-        toggle.addEventListener('click', () => {
-            const isDark = !body.classList.contains('dark-mode');
-            setMode(isDark);
-        });
-    </script>
+         
+   
+    <!-- Dark Mode Script -->
+    <script src="dependencies/dark-mode.js"></script>
+
+    <script>includeHTML();</script>
 </body>
 </html>
