@@ -1,0 +1,23 @@
+# .staticman/config.yml
+
+# Your GitHub repository for saving comments
+github:
+  owner: HoboFrog
+  repo: HoboFrog.github.io
+  branch: master
+  path: comments/{options.slug}.yml
+
+# Your Staticman API settings
+staticman:
+  api:
+    url: https://api.staticman.net/v2/entry/HoboFrog/HoboFrog.github.io/master/comments
+  fields:
+    - name: name
+      label: Name
+      required: true
+    - name: email
+      label: Email
+      required: true
+    - name: text
+      label: Comment
+      required: true
