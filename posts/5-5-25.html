@@ -26,25 +26,70 @@
     </div>
 
     <div class="comment-section">
-        <h2>Comments</h2>
-        <div id="disqus_thread"></div>
-        <script>
-            var disqus_config = function () {
-                this.page.url = window.location.href;  // Replace with your page's canonical URL variable
-                this.page.identifier = document.title; // Replace with your page's unique identifier variable
-            };
-            (function() {
-                var d = document, s = d.createElement('script');
-                s.src = 'https://hobofrog.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-    </div>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <h2>Comments</h2>
+    <form id="commentForm" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="text" placeholder="Your Comment" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="commentsList"></div>
+</div>
+  
+
         <!-- Dark Mode Script -->
     <script src="dependencies/dark-mode.js"></script>
     <script>includeHTML();</script>
+    <script>
+document.getElementById('commentForm').onsubmit = async function(event) {
+    event.preventDefault();  // Prevent the default form submission
+
+    const formData = new FormData(event.target);  // Gather form data
+    const data = Object.fromEntries(formData.entries());  // Convert to object
+
+    const response = await fetch('https://api.staticman.net/v2/entry/HoboFrog/HoboFrog.github.io/master/comments', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),  // Send the data as JSON
+    });
+
+    if (response.ok) {
+        alert('Comment submitted successfully!');  // Notify the user
+        event.target.reset();  // Clear the form
+        loadComments();  // Reload comments to show the new one
+    } else {
+        alert('Error submitting comment.');  // Notify if there's an error
+    }
+};
+
+// Function to load comments from the repository
+async function loadComments() {
+    const response = await fetch('https://api.github.com/repos/HoboFrog/HoboFrog.github.io/contents/comments?ref=master', {
+        headers: {
+            'Accept': 'application/vnd.github.v3.raw',
+        }
+    });
+    
+    const commentsList = document.getElementById('commentsList');
+    commentsList.innerHTML = '';  // Clear existing comments
+
+    if (response.ok) {
+        const comments = await response.json();
+        comments.forEach(comment => {
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            commentDiv.innerHTML = `<strong>${comment.name}:</strong> ${comment.text}`;
+            commentsList.appendChild(commentDiv);
+        });
+    } else {
+        console.error('Error fetching comments:', response.statusText);
+    }
+}
+
+// Call loadComments when the page loads
+document.addEventListener('DOMContentLoaded', loadComments);
+</script>
 </body>
 </html>
