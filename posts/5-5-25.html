@@ -13,10 +13,6 @@
  
      <!-------------------------------------------------------------------------------------->
  
-
-
-  
- 
     <div class="post">
         <h2>Site construction has begun</h2>
         <p style="text-indent: 2em;" class="post-paragraph">Today I decided I wanted to make my own blog, because I don't feel like there is anyone or anywhere where I can share my thoughts freely and safely ish. Hopefully I have enough coding prowess and time to make this a half decent website for us to enjoy.</p>
@@ -34,7 +30,20 @@
   
       <!-- Dark Mode Script -->
     <script src="dependencies/dark-mode.js"></script>
-
     <script>includeHTML();</script>
+    <div id="disqus_thread"></div>
+    <script>    
+    var disqus_config = function () {
+    this.page.url = https://hobofrog.github.io/posts/5-5-25.html;  
+    this.page.identifier = 5-5-25; 
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hobofrog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </body>
 </html>
